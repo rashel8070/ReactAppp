@@ -8,7 +8,10 @@ import {
   Button,
 } from "@nextui-org/react";
 import { useState } from "react";
-// import { TiWeatherDownpour, TiWeatherSunny } from "react-icons/ti";
+import bmwLogo from "/workspaces/Car-React-App/src/assets/bmwLogo.png";
+import toyotaLogo from "/workspaces/Car-React-App/src/assets/toyotaLogo.png"; 
+import lamborghiniLogo from "/workspaces/Car-React-App/src/assets/lamborghiniLogo.png";
+import bugattiLogo from "/workspaces/Car-React-App/src/assets/bugattiLogo.png";
 import { getCarData } from "../api/actions";
 
 const CarCard: React.FC = () => {
@@ -38,8 +41,23 @@ const CarCard: React.FC = () => {
       });
   };
 
+  const getLogo = (manufacturer: string) => {
+    switch (manufacturer) {
+      case "BMW":
+        return bmwLogo;
+      case "Toyota":
+        return toyotaLogo;
+      case "Lamborghini":
+        return lamborghiniLogo;
+      case "Bugatti":
+        return bugattiLogo;
+      default:
+        return ""; // Default case if no logo is found
+    }
+  };
+
   return (
-    <Card className="max-w-[400px]">
+    <Card className="max-w-[400px] items-center">
       <CardHeader className="flex gap-3">
         <form
           onSubmit={(e) => {
@@ -49,9 +67,9 @@ const CarCard: React.FC = () => {
         >
           <div className="flex flex-col w-full p-2 space-y-4">
             <Input
-              id="manufacturername"
+              id="carname"
               type="text"
-              label="Manufacturer"
+              label="Car Company"
               value={manufacturer}
               onChange={(e) => {
                 setManufacturer(e.target.value);
@@ -72,23 +90,19 @@ const CarCard: React.FC = () => {
       {data ? (
         <CardBody>
           <div className="flex flex-col items-center">
+          <img
+              src={getLogo(data.manufacturer)} // Get logo based on manufacturer
+              alt={`${data.manufacturer} logo`}
+              className="w-40 h-40 mb-4"
+            />
             <h1 className="text-3xl font-bold">{data.manufacturer}</h1>
-            {/* {data.temperature > 20 ? (
-              <div>
-                <TiWeatherSunny className="w-36 h-36" />
-              </div>
-            ) : (
-              <div>
-                <TiWeatherDownpour className="w-36 h-36" />
-              </div>
-            )} */}
-            <p className="text-3xl font-bold">{data.model}%</p>
-            <p className="text-lg">Year: {data.year}%</p>
-            <p className="text-lg">Color: {data.color} %</p>
-            <p className="text-lg">Fuel Type: {data.fuelType} km/h</p>
-            <p className="text-lg">Mileage: {data.mileage} %</p>
-            <p className="text-lg">Price: {data.price} %</p>
-            <p className="text-lg">Date Added: {data.dateAdded} %</p>
+            <p className="text-3xl font-bold">{data.model}</p>
+            <p className="text-lg">Year: {data.year}</p>
+            <p className="text-lg">Color: {data.color} </p>
+            <p className="text-lg">Fuel Type: {data.fuelType}</p>
+            <p className="text-lg">Mileage: {data.mileage} km/h</p>
+            <p className="text-lg">Price: £{data.price}</p>
+            <p className="text-lg">Date Added: {data.dateAdded}</p>
           </div>
         </CardBody>
       ) : (

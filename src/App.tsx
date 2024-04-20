@@ -10,6 +10,7 @@ const App = () => {
         <CarCard />
       </div>
     </div>
+
   );
 };
 

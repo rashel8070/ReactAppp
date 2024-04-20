@@ -40,7 +40,7 @@ export const getCarData = async (manufacturer: string): Promise<CarsData> => {
       .get(`${API_URL}/car/${manufacturer}`)
       .then((res) => {
         resolve({
-          manufacturer: manufacturer,
+          manufacturer: res.data.manufacturer,
           model: res.data.model,
           year: res.data.year,
           color: res.data.color,
