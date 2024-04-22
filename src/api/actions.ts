@@ -32,29 +32,26 @@ import axios, { AxiosError } from "axios";
 //   });
 // };
 
-const API_URL = "https://ideal-telegram-r44gwv97pjjq2wxqv-3000.app.github.dev/api";
+const API_URL = "https://legendary-sniffle-jx55jvp677pfpv6q-3000.app.github.dev/";
 
-export const getCarData = async (manufacturer: string): Promise<CarsData> => {
-  return new Promise<CarsData>((resolve, reject) => {
+export const getfootballdata = async (country: string): Promise<FootBallData> => {
+  return new Promise<FootBallData>((resolve, reject) => {
     axios
-      .get(`${API_URL}/car/${manufacturer}`)
+      .get(`${API_URL}/car/${country}`)
       .then((res) => {
         resolve({
-          manufacturer: res.data.manufacturer,
-          model: res.data.model,
-          year: res.data.year,
-          color: res.data.color,
-          fuelType: res.data.fuelType,
-          mileage: res.data.mileage,
-          price: res.data.price,
-          dateAdded: res.data.dateAdded
+          country: res.data.country,
+          title: res.data.title,
+          runnerup: res.data.runnerup,
+          ranking: res.data.ranking,
+          
         });
       })
       .catch((error) => {
         if (axios.isAxiosError(error)) {
           const axiosError = error as AxiosError;
           if (axiosError.response?.status === 404) {
-            reject("Car not found");
+            reject("Country not found");
           } else {
             // It's a good practice to reject with an Error object
             reject(axiosError.message);

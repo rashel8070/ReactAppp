@@ -6,13 +6,10 @@ interface WeatherData {
   rain: number;
 }
 
-interface CarsData{
-  manufacturer: string;  // The manufacturer of the car
-  model: string;         // The model of the car
-  year: number;          // The year the car was manufactured
-  color: string;         // The color of the car
-  fuelType: string;      // The type of fuel the car uses (e.g., gasoline, diesel, electric)
-  mileage: number;       // The mileage of the car
-  price: number;         // The price of the car
-  dateAdded: number;       // The date when the car was added to the inventory
+interface FootBallData{
+  country: string;  // The manufacturer of the car
+  title: number;         // The model of the car
+  runnerup: number;          // The year the car was manufactured
+  ranking: number;         // The color of the car
+        // The date when the car was added to the inventory
 }
