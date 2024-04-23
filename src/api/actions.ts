@@ -32,12 +32,12 @@ import axios, { AxiosError } from "axios";
 //   });
 // };
 
-const API_URL = "https://legendary-sniffle-jx55jvp677pfpv6q-3000.app.github.dev/";
+const API_URL = "https://legendary-sniffle-jx55jvp677pfpv6q-3000.app.github.dev/api";
 
 export const getfootballdata = async (country: string): Promise<FootBallData> => {
   return new Promise<FootBallData>((resolve, reject) => {
     axios
-      .get(`${API_URL}/car/${country}`)
+      .get(`${API_URL}/country/${country}`)
       .then((res) => {
         resolve({
           country: res.data.country,

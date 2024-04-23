@@ -1,6 +1,6 @@
 import { Navbar, NavbarBrand, NavbarContent } from "@nextui-org/react";
-import { MdApi } from "react-icons/md";
-import carIcon from "/workspaces/Car-React-App/src/assets/carIcon.svg"
+//import { MdApi } from "react-icons/md";
+import carIcon from "/workspaces/ReactAppp/src/assets/carIcon.svg"
 
 const NavBar = () => {
   return (
