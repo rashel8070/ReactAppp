@@ -8,23 +8,22 @@ import {
   Button,
 } from "@nextui-org/react";
 import { useState } from "react";
-import bmwLogo from "/workspaces/Car-React-App/src/assets/bmwLogo.png";
-import toyotaLogo from "/workspaces/Car-React-App/src/assets/toyotaLogo.png"; 
-import lamborghiniLogo from "/workspaces/Car-React-App/src/assets/lamborghiniLogo.png";
-import bugattiLogo from "/workspaces/Car-React-App/src/assets/bugattiLogo.png";
-import { getCarData } from "../api/actions";
+import brazilFlag from "/workspaces/ReactAppp/src/assets/brazil.jpg";
+import englandFlag from "/workspaces/ReactAppp/src/assets/england.jpg"; 
+import germanyFlag from "/workspaces/ReactAppp/src/assets/germany.jpg";
+import { getfootballdata } from "../api/actions";
 
-const CarCard: React.FC = () => {
-  const [data, setData] = useState<CarsData>();
+const Footballcard: React.FC = () => {
+  const [data, setData] = useState<FootBallData>();
   const [loadingState, setLoadingState] = useState(false);
-  const [manufacturer, setManufacturer] = useState("");
+  const [country, setCountry] = useState("");
   const [error, setError] = useState("");
 
   const handleSearch = () => {
-    console.log("Fetching Car Data...");
-    console.log(manufacturer);
+    console.log("Fetching Football Data...");
+    console.log(country);
     setLoadingState(true);
-    getCarData(manufacturer)
+    getfootballdata(country)
       .then((res) => {
         setError("");
         if (res) {
@@ -41,16 +40,15 @@ const CarCard: React.FC = () => {
       });
   };
 
-  const getLogo = (manufacturer: string) => {
-    switch (manufacturer) {
-      case "BMW":
-        return bmwLogo;
-      case "Toyota":
-        return toyotaLogo;
-      case "Lamborghini":
-        return lamborghiniLogo;
-      case "Bugatti":
-        return bugattiLogo;
+  const getLogo = (country: string) => {
+    switch (country) {
+      case "brazil":
+        return brazilFlag;
+      case "england":
+        return englandFlag;
+      case "germany":
+        return germanyFlag;
+
       default:
         return ""; // Default case if no logo is found
     }
@@ -67,12 +65,12 @@ const CarCard: React.FC = () => {
         >
           <div className="flex flex-col w-full p-2 space-y-4">
             <Input
-              id="carname"
+              id="countryname"
               type="text"
-              label="Car Company"
-              value={manufacturer}
+              label="football"
+              value={country}
               onChange={(e) => {
-                setManufacturer(e.target.value);
+                setCountry(e.target.value);
               }}
             />
             <Button
@@ -91,24 +89,21 @@ const CarCard: React.FC = () => {
         <CardBody>
           <div className="flex flex-col items-center">
           <img
-              src={getLogo(data.manufacturer)} // Get logo based on manufacturer
-              alt={`${data.manufacturer} logo`}
+              src={getLogo(data.country)} // Get logo based on manufacturer
+              alt={`${data.country} logo`}
               className="w-40 h-40 mb-4"
             />
-            <h1 className="text-3xl font-bold">{data.manufacturer}</h1>
-            <p className="text-3xl font-bold">{data.model}</p>
-            <p className="text-lg">Year: {data.year}</p>
-            <p className="text-lg">Color: {data.color} </p>
-            <p className="text-lg">Fuel Type: {data.fuelType}</p>
-            <p className="text-lg">Mileage: {data.mileage} km/h</p>
-            <p className="text-lg">Price: £{data.price}</p>
-            <p className="text-lg">Date Added: {data.dateAdded}</p>
+            <h1 className="text-3xl font-bold">{data.country}</h1>
+            <p className="text-3xl font-bold">{data.title}</p>
+            <p className="text-lg">Year: {data.runnerup}</p>
+            <p className="text-lg">Color: {data.ranking} </p>
+            
           </div>
         </CardBody>
       ) : (
         <CardBody>
           <div className="flex flex-col items-center">
-            <p className="text-xl font-bold">Please enter a car company</p>
+            <p className="text-xl font-bold">Please enter a country name</p>
           </div>
         </CardBody>
       )}
@@ -128,4 +123,4 @@ const CarCard: React.FC = () => {
   );
 };
 
-export default CarCard;
+export default Footballcard;
