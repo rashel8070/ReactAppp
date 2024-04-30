@@ -7,9 +7,9 @@ interface WeatherData {
 }
 
 interface FootBallData{
-  country: string;  // The manufacturer of the car
-  title: number;         // The model of the car
-  runnerup: number;          // The year the car was manufactured
-  ranking: number;         // The color of the car
+  country: string;  // The name of the country
+  title: number;         // How many times the team won
+  runnerup: number;          // How many times the coutry was runnerup
+  ranking: number;         // current ranking
         // The date when the car was added to the inventory
 }
